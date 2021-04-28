@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>RPi Basic Recipes</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <a
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-style: oblique; font-weight: bold; font-size: large;">Tunisian
+                    Leaders</a>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto text-primary">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            Coding
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Arduino</a></li>
+                            <li><a class="dropdown-item" href="#">Python</a></li>
+
+                            <li><a class="dropdown-item" href="#">Web Development</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Real Life Projects</a></li>
+
+                            <li><a class="dropdown-item" href="#">Business & Ideas</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <img style="margin-top: 2cm; margin-left: 12cm ; border-radius: 0.5cm; border-style: dashed;"
+        src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\servo gif.gif">
+    <h1
+        style="margin-left: 5cm; margin-top: 1cm; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+        Basic Servo Use With the Raspberry Pi and GpioZero</h1>
+
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <p style="font-size: 20px;">A servo is motor that uses a set of gears to create rotary motion. Radio controlled vehicles and
+                animation projects often use them to generate movement. They vary in size and capability but small
+                servos are cheap and a great way to introduce movement into your Raspberry Pi projects.
+
+
+                This post will explain how to connect a small servo to your Pi in the easiest way possible with the
+                minimum of hardware.</p>
+        </div>
+        <div class="grid-item">
+            <img style="width: 15cm;"
+                src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\basic_servo_examples-702x336.jpg"
+                alt="">
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>Parts</h3>
+            <p style="font-size: 20px;">You will need :</p>
+            <ul style="font-size: 20px;">
+                <li>A Raspberry Pi</li>
+                <li>SD card with latest Raspbian operating system</li>
+                <li>Small servo (TowerPro 9g or equivalent)</li>
+            </ul>
+        </div>
+        <div class="grid-item">
+            <img style="width: 10cm;" src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\tower_pro_9g_servo-e1513716605278-300x199.jpg" alt="">
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h2>Servo Colour Codes</h2>
+            <p style="font-size: 32px;">Servos generally have three wires. Two are for power and one is for the data signal. The colouring of these wires vary between manufacturers but they usually follow one of the schemes :</p>
+        </div>
+        <div class="grid-item">
+              <img src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\servo_colour_codes.jpeg" alt="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\servo_colour_codes.jpeg">
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>Servos and PWM</h3>
+            <p style="font-size: 32px;">There are plenty of resources out there that explain how servos work. The important bit is that they take a PWM (Pulse Width Modulation) data signal. This is a sequence of high-low pulses where the timing between each pulse determines the rotary position.</p>
+        </div>
+        <div class="grid-item">
+             <img src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\servo_pwm_example_graphs.png" alt="">
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>Hardware Setup</h3>
+            <p>The easiest configuration is to connect the servo directly to the Pi. This is suitable for small servos that aren’t expected to perform any demanding tasks. The power will be drawn via the Pi’s 5V pin and is subject to certain limitations. If your servo draws too much current then it may affect the operation of USB devices or the Pi itself.
+
+                Any GPIO pin can be used</p>
+                <img src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\branchement.jpg" alt="">
+        </div>
+        <div class="grid-item">
+          <img style="width: 12cm;" src="E:\Learning_Projects\web development\tunisian leaders\tunisian leaders\tunisianleaders.com\img\Basic-Servo-Example.png" alt="">
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>Example Python Servo Script</h3>
+            <p style="font-size: 1cm;">Once connected the easiest way to get your servo moving is to use the Gpiozero library in a Python script. It is installed by default in the latest Raspbian image.
+
+                You can use this Python script :</p>
+        </div>
+        <div class="grid-item">
+<pre>
+    from gpiozero import Servo 
+    from time import sleep
+                
+    myGPIO=17
+                
+    servo = Servo(myGPIO)
+                
+    while True:
+        servo.mid()
+        print(&quot;mid&quot;)
+        sleep(0.5)
+        servo.min()
+        print(&quot;min&quot;)
+        sleep(1)
+        servo.mid()
+        print(&quot;mid&quot;)
+        sleep(0.5)
+        servo.max()
+        print(&quot;max&quot;)
+        sleep(1)
+</pre>
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>Example Python Servo Script #2 – Calibrating Range</h3>
+            <p style="font-size: 25px;">The first script makes use of the Gpiozero defaults. It assumes the servo uses a signal frame width of 20ms. The pulse width for the minimum and maximum rotation is assumed to be 1ms and 2ms. This information should be available in the servo specification and I would avoid sellers that don’t provide this data.
+
+                I found that with the default settings my servo only moved +45/-45 degrees. I changed the pulse width parameters in order to get a full 90 degrees of rotation in either direction . The script below demonstrates this :</p>
+                <br>
+                <p>The servo should now move between its minimum, middle and maximum positions with a small delay in-between.
+
+                    In this example the min pulse width is decreased from the default of 1 by a correction of 0.45 to 0.55ms. The max pulse width is increased from the default of 2 by 0.45 to 2.45ms. This gave my servo a full 90 degrees of rotation in both directions. The values “0.55” and “2.45” are divided by 1000 to convert them to milliseconds.
+                    
+                    There is nothing magical about “0.45”. It was just the correction that worked best for my servo.
+                    
+                    To work out these numbers I started with :</p>
+                    <p>and increased/decreased the correction number in increments of 0.05. This allowed me to find the biggest change I could make before the servo sounded unhappy.
+
+                        “myCorrection” has to be a number between 0 and 1 but is unlikely to ever need to be 1!</p>
+        </div>
+        <div class="grid-item">
+<pre>
+    from gpiozero import Servo
+    from time import sleep
+     
+    myGPIO=17
+     
+    myCorrection=0.45
+    maxPW=(2.0+myCorrection)/1000
+    minPW=(1.0-myCorrection)/1000
+     
+    servo = Servo(myGPIO,min_pulse_width=minPW,max_pulse_width=maxPW)
+     
+    while True:
+        servo.mid()
+        print("mid")
+        sleep(0.5)
+        servo.min()
+        print("min")
+        sleep(1)
+        servo.mid()
+        print("mid")
+        sleep(0.5)
+        servo.max()
+        print("max")
+        sleep(1)                
+</pre>
+<br><br><br><br><br><br><br><br>
+<pre>
+        myCorrection=0
+        maxPW=(2.0+myCorrection)/1000
+        minPW=(1.0-myCorrection)/1000
+</pre>
+        </div>
+    </div>
+    <!-- grid -->
+    <div class="grid-container" style="margin-top: 1.5cm;">
+        <div class="grid-item">
+            <h3>AngularServo</h3>
+            <p>Extends Servo and represents a rotational PWM-controlled servo motor which can be set to particular angles (assuming valid minimum and maximum angles are provided to the constructor).
+
+                Connect a power source (e.g. a battery pack or the 5V pin) to the power cable of the servo (this is typically colored red); connect the ground cable of the servo (typically colored black or brown) to the negative of your battery pack, or a GND pin; connect the final cable (typically colored white or orange) to the GPIO pin you wish to use for controlling the servo.
+                
+                Next, calibrate the angles that the servo can rotate to. In an interactive Python session, construct a Servo instance. The servo should move to its mid-point by default. Set the servo to its minimum value, and measure the angle from the mid-point. Set the servo to its maximum value, and again measure the angle:</p>
+        </div>
+        <div class="grid-item">
+<pre>
+    from gpiozero import Servo
+    s = Servo(17)
+    s.min() # measure the angle
+    s.max() # measure the angle
+</pre>
+<br><br><br><br><br><br>
+<pre>
+    from gpiozero import AngularServo
+    s = AngularServo(17, min_angle=-42, max_angle=44)
+    s.angle = 0.0
+    s.angle = 15
+</pre>
+        </div>
+    </div>
+
+    <style>
+        .grid-container {
+            margin-left: 2cm;
+            margin-right: 2cm;
+            display: inline-grid;
+            grid-template-columns: auto auto;
+            background-color: #e4ca99;
+            padding: 5px;
+            grid-column-gap: 50px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            
+            
+        }
+    </style>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
